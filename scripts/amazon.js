@@ -1,6 +1,8 @@
- let HTML = '';
+ import {cart} from '../data/cart.js';
+ 
+let productsHTML = '';
 products.forEach((product)=>{
-    HTML +=`<div class="product-container">
+    productsHTML +=`<div class="product-container">
     <div class="product-image-container">
       <img class="product-image"
         src="${product.image}">
@@ -52,7 +54,7 @@ products.forEach((product)=>{
   </div>`;
 });
 
-document.querySelector('.js-products-grid').innerHTML = HTML;
+document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
 let matchingItem;
 document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
