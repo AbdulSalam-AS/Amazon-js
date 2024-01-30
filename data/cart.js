@@ -29,3 +29,17 @@ export function addToCart(productId) {
   
   }
   
+  export function removeFromCart(productId){
+
+
+    
+    const newCart = [];
+    
+    newCart.forEach((cartItem)=>{
+      if(cartItem.productId !== productId){
+        newcart.push(cartItem);
+      }
+    });
+   
+    cart = newCart;
+    }
