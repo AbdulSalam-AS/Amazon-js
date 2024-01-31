@@ -36,6 +36,15 @@ export function addToCart(productId) {
     saveToStorage();
   }
   
+  
+export function cartQuantity(cart){
+  let cartQuantity = 0;
+  cart.forEach((cartItem)=>{
+    cartQuantity += cartItem.quantity;
+  })
+  document.querySelector('.js-return-to-home-link').innerText = `${cartQuantity} items`;
+}
+
   export function removeFromCart(productId){
     const newCart = [];
     
@@ -44,7 +53,6 @@ export function addToCart(productId) {
         newcart.push(cartItem);
       }
     });
-   
     cart = newCart;
     saveToStorage();
     }
