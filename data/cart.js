@@ -52,9 +52,9 @@ export function cartQuantity(){
   export function removeFromCart(productId){
     const newCart = [];
     
-    newCart.forEach((cartItem)=>{
+    cart.forEach((cartItem)=>{
       if(cartItem.productId !== productId){
-        newcart.push(cartItem);
+        newCart.push(cartItem);
       }
     });
       cart = newCart;

@@ -2,7 +2,7 @@ import {cart} from '../../data/cart.js';
 import { getProduct } from '../../data/products.js';
 import { getDeliveryOption} from '../../data/deliveryOptions.js';
 import { formatCurrency } from '../utils/money.js';
-
+import {checkOutItemsQuantity} from './checkoutHeader.js';
 export function renderPaymentSummary(){
     let productPriceCents = 0;
     let shippingPriceCents = 0;
@@ -11,21 +11,21 @@ export function renderPaymentSummary(){
        productPriceCents += product.priceCents * cartItem.quantity; 
        
        const deliveryOption = getDeliveryOption(cartItem.deliveryOptionId);
-       shippingPriceCents += deliveryOption.priceCents;
+       shippingPriceCents += deliveryOption;
     })
     const totalBeforeTaxCents = productPriceCents + shippingPriceCents;
     const taxCents = totalBeforeTaxCents * 0.1;
     const totalCents = totalBeforeTaxCents + taxCents;
 
 
-
+    let checkOutQuantity = checkOutItemsQuantity();
     const paymentSummaryHTML =`
     <div class="payment-summary-title">
       Order Summary
     </div>
 
     <div class="payment-summary-row">
-      <div>Items (3):</div>
+      <div class="js-payment-summary-items">items(${checkOutQuantity}) :</div>
       <div class="payment-summary-money">$${formatCurrency(productPriceCents)}</div>
     </div>
 
